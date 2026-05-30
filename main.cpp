@@ -1,143 +1,76 @@
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
-
+//create a simple calculator
 
 
 using namespace std;
 
-
+int add(int a,int b)
+{
+    return a + b;
+}
+int subtract(int a,int b)
+{
+    return a - b;
+}
+int multiplication(int a,int b)
+{
+    return a*b;
+}
+int divide(int a,int b)
+{
+    return a/b;
+}
 
 int main()
 {
-    srand(time(0));
-
-    char replay = 'y';
-
-
-    while (replay == 'y' || replay == 'Y')
-    {
-
-
-        int choice;
-    int maxNumb;
-    int attempts;
-    int guess;
-    int randNumb;
-    bool won;
-
-    cout<<"Welcome to the number guessing game ." <<endl;
-    cout<<"choose a difficulty:\n";
-    cout<<"1.Simple\n";
-    cout<<"2.Okay\n";
-    cout<<"3.Quite difficult\n";
-
+    int choice;
+    cout <<"Choose the sort operation to be carried out\n 1.Addition\n 2.subtraction\n 3.multiplication\n 4.division\n";
     cin>>choice;
-
-
-    if ( choice >=1 && choice <= 3 )
+    if (choice >=1 && choice <=4 )
     {
-
-
-      switch(choice)
-      {
-
-
-      case 1:
-        maxNumb = 50;
-        attempts = 20;
-        break;
-
-
-      case 2:
-        maxNumb = 100;
-        attempts = 10;
-        break;
-
-
-      case 3:
-        maxNumb = 200;
-        attempts = 5;
-        break;
-
-
-      }
-
-
-      randNumb = rand()% maxNumb +1;
-
-      cout<<"The number to be guessed is between 1 and "<<maxNumb<<endl;
-
-      while(attempts > 0)
-      {
-
-          cout<<"Enter your guess:\n";
-          cin>>guess;
-
-          if (guess == randNumb)
-          {
-
-              cout<<"Congrats you guessed correctly."<<endl;
-              won = true;
-              break;
-
-          }
-
-          else if (guess > randNumb )
-          {
-
-              cout<<"Ooouuu!! Sorry but you guessed a bit high.\n Try again."<<endl;
-
-          }
-
-          else
-          {
-
-              cout<<"Ooouuu!! Sorry but you guessed a bit Low.\n Try again."<<endl;
-
-          }
-
-          attempts--;
-          if (attempts > 0)
-          {
-
-              cout<<"You have "<<attempts<<" attempts left.\n";
-
-          }
-
-
-      }
-
-      if (won = false)
-      {
-          cout << "You have used up all your guess chances." << endl;
-          cout<< "The number was " << randNumb << " ." << endl;
-      }
-
+        if(choice == 1)
+    {
+        int x;
+        int y;
+        cout<<"Enter the two numbers that you want to add.\n";
+        cin>>x>>y;
+        cout<<"result: "<< add(x,y);
 
     }
-
-
+    else if(choice == 2)
+    {
+        int x;
+        int y;
+        cout<<"Enter the numbers you want to subtract\n NB: The second will be subtracted from the first";
+        cin>>x>>y;
+        cout<<"Result: "<<subtract(x,y);
+    }
+    else if (choice == 3)
+    {
+        int x;
+        int y;
+        cout<<"Enter the two numbers you want to multiply\n";
+        cin>>x>>y;
+        cout<<"Result: "<<multiplication(x,y);
+    }
     else
     {
-
-
-        cout<<"Invalid Input detected\n";
-        cout<<"Enter a value between and including 1 and 3 \n";
-
-
-
-    }
-
-    cout << "Do you wanna play again?"<<endl;
-    cin>>replay;
+        int x;
+        int y;
+        cout<<"Enter the two numbers you want to divide\n";
+        cin>>x>>y;
+        if(divide(x,y) == 0 )
+        {
+            cout<<"Error.We do not them type of divisions.";
+        }
+        cout<<"Result: "<<divide(x,y);
 
     }
-
-
-
-
-
-
+    }
+    else
+    {
+        cout<<"Choose an option from 1 to 4";
+    }
+    //cout << "Hello world!" << endl;
     return 0;
 }
